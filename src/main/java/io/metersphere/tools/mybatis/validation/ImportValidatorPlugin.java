@@ -1,4 +1,4 @@
-package com.fit2cloud.tools.mybatis.swagger;
+package io.metersphere.tools.mybatis.validation;
 
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
@@ -7,15 +7,8 @@ import org.mybatis.generator.api.dom.java.TopLevelClass;
 
 import java.util.List;
 
-/**
- * Author: chunxing
- * Date: 2018/7/21  下午2:06
- * Description:
- */
-public class ImportSwaggerPlugin extends PluginAdapter {
-    private FullyQualifiedJavaType serializable = new FullyQualifiedJavaType("io.swagger.annotations.ApiModelProperty");
+public class ImportValidatorPlugin extends PluginAdapter {
 
-    @Override
     public boolean validate(List<String> list) {
         return true;
     }
@@ -36,7 +29,10 @@ public class ImportSwaggerPlugin extends PluginAdapter {
     }
 
     private void makeApiModel(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
-        topLevelClass.addImportedType(this.serializable);
+        topLevelClass.addImportedType(new FullyQualifiedJavaType("jakarta.validation.constraints.NotBlank"));
+        topLevelClass.addImportedType(new FullyQualifiedJavaType("jakarta.validation.constraints.Size"));
+        topLevelClass.addImportedType(new FullyQualifiedJavaType("io.metersphere.validation.groups.Created"));
+        topLevelClass.addImportedType(new FullyQualifiedJavaType("io.metersphere.validation.groups.Updated"));
     }
 
 

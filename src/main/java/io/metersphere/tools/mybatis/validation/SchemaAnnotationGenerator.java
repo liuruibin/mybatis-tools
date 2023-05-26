@@ -1,4 +1,4 @@
-package com.fit2cloud.tools.mybatis.swagger;
+package io.metersphere.tools.mybatis.validation;
 
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;

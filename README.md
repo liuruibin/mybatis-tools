@@ -66,8 +66,10 @@ and ( first_name like '%Ava%' or last_name like '%Ava%')
 
 ##### How to use
 Simply mvn package the project and add the plugin in your generatorConfig.xml(maybe some other file you named).
+
 ```xml
-<plugin type="com.fit2cloud.tools.mybatis.SqlCriterionGeneratorPlugin" />
+
+<plugin type="io.metersphere.tools.mybatis.SqlCriterionGeneratorPlugin"/>
 ```
 ###### Reference
 [Supplied Plugins by MBG](http://www.mybatis.org/generator/reference/plugins.html "Supplied Plugins")
@@ -135,11 +137,12 @@ Then you will get a swagger model.
 
 ##### How to use
 Simply mvn package the project and add the plugin in your generatorConfig.xml(maybe some other file you named).
+
 ```xml
 <!-- this class add import(import io.swagger.annotations.ApiModelProperty;) in the model -->
-<plugin type="com.fit2cloud.tools.mybatis.swagger.ImportSwaggerPlugin" />
-<!-- this class add annotation(@ApiModelProperty) for the fields -->
-<commentGenerator type="com.fit2cloud.tools.mybatis.swagger.ApiModelPropertyAnnotationGenerator">
-    <property name="suppressDate" value="true"/>
+<plugin type="io.metersphere.tools.mybatis.swagger.ImportSwaggerPlugin"/>
+        <!-- this class add annotation(@ApiModelProperty) for the fields -->
+<commentGenerator type="io.metersphere.tools.mybatis.swagger.ApiModelPropertyAnnotationGenerator">
+<property name="suppressDate" value="true"/>
 </commentGenerator>
 ```
