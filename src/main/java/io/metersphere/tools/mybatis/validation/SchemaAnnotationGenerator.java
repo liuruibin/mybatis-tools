@@ -6,13 +6,24 @@ import org.mybatis.generator.api.dom.java.Field;
 import org.mybatis.generator.api.dom.java.InnerClass;
 import org.mybatis.generator.internal.DefaultCommentGenerator;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class SchemaAnnotationGenerator extends DefaultCommentGenerator {
+    // 后台直接给值的字段，不需要限制传入
+    private List<String> ignoreColumns = Arrays.asList(
+            "create_time",
+            "update_time",
+            "delete_time",
+            "create_user",
+            "update_user",
+            "delete_user"
+    );
 
     @Override
     public void addFieldComment(Field field, IntrospectedTable introspectedTable, IntrospectedColumn introspectedColumn) {
-        if (!introspectedColumn.isNullable() && !("create_time".equalsIgnoreCase(introspectedColumn.getActualColumnName())
-                || "delete_time".equalsIgnoreCase(introspectedColumn.getActualColumnName())
-                || "update_time".equalsIgnoreCase(introspectedColumn.getActualColumnName()))) {
+        if (!introspectedColumn.isNullable() && !ignoreColumns.contains(introspectedColumn.getActualColumnName())) {
             field.addJavaDocLine("@Schema(title = \"" + introspectedColumn.getRemarks() + "\", requiredMode = Schema.RequiredMode.REQUIRED)");
 
             String notBlankMessage = introspectedTable.getAliasedFullyQualifiedTableNameAtRuntime() + "." + introspectedColumn.getActualColumnName() + ".not_blank";
