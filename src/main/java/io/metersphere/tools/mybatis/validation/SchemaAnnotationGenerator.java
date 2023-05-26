@@ -19,7 +19,7 @@ public class SchemaAnnotationGenerator extends DefaultCommentGenerator {
             if ("id".equalsIgnoreCase(introspectedColumn.getActualColumnName())) {
                 field.addJavaDocLine("@NotBlank(message = \"{" + notBlankMessage + "}\", groups = {Created.class, Updated.class})");
             } else {
-                field.addJavaDocLine("@NotBlank(message = \"{" + notBlankMessage + "}\", groups = {Updated.class})");
+                field.addJavaDocLine("@NotBlank(message = \"{" + notBlankMessage + "}\", groups = {Created.class})");
             }
 
             String lengthRangeMessage = introspectedTable.getAliasedFullyQualifiedTableNameAtRuntime() + "." + introspectedColumn.getActualColumnName() + ".length_range";
