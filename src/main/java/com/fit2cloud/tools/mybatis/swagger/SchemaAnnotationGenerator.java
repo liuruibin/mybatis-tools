@@ -13,7 +13,7 @@ public class SchemaAnnotationGenerator extends DefaultCommentGenerator {
         if (!introspectedColumn.isNullable() && !("create_time".equalsIgnoreCase(introspectedColumn.getActualColumnName())
                 || "delete_time".equalsIgnoreCase(introspectedColumn.getActualColumnName())
                 || "update_time".equalsIgnoreCase(introspectedColumn.getActualColumnName()))) {
-            field.addJavaDocLine("@Schema(title = \"" + introspectedColumn.getRemarks() + "\", requiredMode = Schema.RequiredMode.REQUIRED, allowableValues = \"range[1, " + introspectedColumn.getLength() + "]\")");
+            field.addJavaDocLine("@Schema(title = \"" + introspectedColumn.getRemarks() + "\", requiredMode = Schema.RequiredMode.REQUIRED)");
 
             String notBlankMessage = introspectedTable.getAliasedFullyQualifiedTableNameAtRuntime() + "." + introspectedColumn.getActualColumnName() + ".not_blank";
             if ("id".equalsIgnoreCase(introspectedColumn.getActualColumnName())) {
