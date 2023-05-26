@@ -21,7 +21,7 @@
         <!-- Publish the versioned releases here -->
         <repository>
             <id>fit2cloud-public</id>
-            <url>http://repository.fit2cloud.com/content/repositories/fit2cloud-public</url>
+            <url>https://repository.fit2cloud.com/content/repositories/fit2cloud-public</url>
         </repository>
     </distributionManagement>
 
