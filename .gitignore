@@ -1,5 +1,5 @@
 .idea
-tools.iml
+**/*.iml
 target/
 /src/main/resources/generatorConfig.xml
 .classpath

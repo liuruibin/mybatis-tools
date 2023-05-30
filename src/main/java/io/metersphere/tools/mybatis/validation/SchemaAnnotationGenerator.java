@@ -36,9 +36,10 @@ public class SchemaAnnotationGenerator extends DefaultCommentGenerator {
             } else {
                 field.addJavaDocLine("@NotBlank(message = \"{" + notBlankMessage + "}\", groups = {Created.class})");
             }
-
-            String lengthRangeMessage = introspectedTable.getAliasedFullyQualifiedTableNameAtRuntime() + "." + introspectedColumn.getActualColumnName() + ".length_range";
-            field.addJavaDocLine("@Size(min = 1, max = " + introspectedColumn.getLength() + ", message = \"{" + lengthRangeMessage + "}\", groups = {Created.class, Updated.class})");
+            if (introspectedColumn.isStringColumn()) {
+                String lengthRangeMessage = introspectedTable.getAliasedFullyQualifiedTableNameAtRuntime() + "." + introspectedColumn.getActualColumnName() + ".length_range";
+                field.addJavaDocLine("@Size(min = 1, max = " + introspectedColumn.getLength() + ", message = \"{" + lengthRangeMessage + "}\", groups = {Created.class, Updated.class})");
+            }
         } else {
             field.addJavaDocLine("@Schema(title = \"" + introspectedColumn.getRemarks() + "\")");
         }
