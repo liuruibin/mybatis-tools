@@ -29,10 +29,8 @@ public class ImportValidatorPlugin extends PluginAdapter {
     }
 
     private void makeApiModel(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
-        topLevelClass.addImportedType(new FullyQualifiedJavaType("jakarta.validation.constraints.NotBlank"));
-        topLevelClass.addImportedType(new FullyQualifiedJavaType("jakarta.validation.constraints.Size"));
-        topLevelClass.addImportedType(new FullyQualifiedJavaType("io.metersphere.validation.groups.Created"));
-        topLevelClass.addImportedType(new FullyQualifiedJavaType("io.metersphere.validation.groups.Updated"));
+        topLevelClass.addImportedType(new FullyQualifiedJavaType("jakarta.validation.constraints.*"));
+        topLevelClass.addImportedType(new FullyQualifiedJavaType("io.metersphere.validation.groups.*"));
     }
 
 
