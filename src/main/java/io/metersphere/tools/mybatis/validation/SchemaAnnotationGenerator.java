@@ -6,7 +6,6 @@ import org.mybatis.generator.api.dom.java.Field;
 import org.mybatis.generator.api.dom.java.InnerClass;
 import org.mybatis.generator.internal.DefaultCommentGenerator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -34,7 +33,11 @@ public class SchemaAnnotationGenerator extends DefaultCommentGenerator {
                     field.addJavaDocLine("@NotBlank(message = \"{" + notBlankMessage + "}\", groups = {Updated.class})");
                 }
             } else {
-                field.addJavaDocLine("@NotBlank(message = \"{" + notBlankMessage + "}\", groups = {Created.class})");
+                if (introspectedColumn.isStringColumn()) {
+                    field.addJavaDocLine("@NotBlank(message = \"{" + notBlankMessage + "}\", groups = {Created.class})");
+                } else {
+                    field.addJavaDocLine("@NotNull(message = \"{" + notBlankMessage + "}\", groups = {Created.class})");
+                }
             }
             if (introspectedColumn.isStringColumn()) {
                 String lengthRangeMessage = introspectedTable.getAliasedFullyQualifiedTableNameAtRuntime() + "." + introspectedColumn.getActualColumnName() + ".length_range";
