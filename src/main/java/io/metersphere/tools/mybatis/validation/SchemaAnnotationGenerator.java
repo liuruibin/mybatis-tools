@@ -17,7 +17,8 @@ public class SchemaAnnotationGenerator extends DefaultCommentGenerator {
             "delete_time",
             "create_user",
             "update_user",
-            "delete_user"
+            "delete_user",
+            "num"
     );
 
     @Override
