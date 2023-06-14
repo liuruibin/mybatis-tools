@@ -29,11 +29,7 @@ public class SchemaAnnotationGenerator extends DefaultCommentGenerator {
 
             String notBlankMessage = introspectedTable.getAliasedFullyQualifiedTableNameAtRuntime() + "." + introspectedColumn.getActualColumnName() + ".not_blank";
             if ("id".equalsIgnoreCase(introspectedColumn.getActualColumnName())) {
-                if ("user".equalsIgnoreCase(introspectedTable.getAliasedFullyQualifiedTableNameAtRuntime())) {
-                    field.addJavaDocLine("@NotBlank(message = \"{" + notBlankMessage + "}\", groups = {Created.class, Updated.class})");
-                } else {
-                    field.addJavaDocLine("@NotBlank(message = \"{" + notBlankMessage + "}\", groups = {Updated.class})");
-                }
+                field.addJavaDocLine("@NotBlank(message = \"{" + notBlankMessage + "}\", groups = {Updated.class})");
             } else {
                 if (introspectedColumn.isStringColumn()) {
                     field.addJavaDocLine("@NotBlank(message = \"{" + notBlankMessage + "}\", groups = {Created.class})");
