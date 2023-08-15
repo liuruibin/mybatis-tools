@@ -25,7 +25,7 @@ public class SchemaAnnotationGenerator extends DefaultCommentGenerator {
     @Override
     public void addFieldComment(Field field, IntrospectedTable introspectedTable, IntrospectedColumn introspectedColumn) {
         if (!introspectedColumn.isNullable() && !ignoreColumns.contains(introspectedColumn.getActualColumnName())) {
-            field.addJavaDocLine("@Schema(title = \"" + introspectedColumn.getRemarks() + "\", requiredMode = Schema.RequiredMode.REQUIRED)");
+            field.addJavaDocLine("@Schema(description = \"" + introspectedColumn.getRemarks() + "\", requiredMode = Schema.RequiredMode.REQUIRED)");
 
             String notBlankMessage = introspectedTable.getAliasedFullyQualifiedTableNameAtRuntime() + "." + introspectedColumn.getActualColumnName() + ".not_blank";
             if ("id".equalsIgnoreCase(introspectedColumn.getActualColumnName())) {
@@ -42,7 +42,7 @@ public class SchemaAnnotationGenerator extends DefaultCommentGenerator {
                 field.addJavaDocLine("@Size(min = 1, max = " + introspectedColumn.getLength() + ", message = \"{" + lengthRangeMessage + "}\", groups = {Created.class, Updated.class})");
             }
         } else {
-            field.addJavaDocLine("@Schema(title = \"" + introspectedColumn.getRemarks() + "\")");
+            field.addJavaDocLine("@Schema(description = \"" + introspectedColumn.getRemarks() + "\")");
         }
 
     }
