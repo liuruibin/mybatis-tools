@@ -25,8 +25,8 @@
     <distributionManagement>
         <!-- Publish the versioned releases here -->
         <repository>
-            <id>fit2cloud-public</id>
-            <url>https://repository.fit2cloud.com/content/repositories/fit2cloud-public</url>
+            <id>metersphere-public</id>
+            <url>https://repository.fit2cloud.com/content/repositories/metersphere</url>
         </repository>
     </distributionManagement>
 
